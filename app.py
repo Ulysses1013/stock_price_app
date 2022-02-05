@@ -15,7 +15,7 @@ st.sidebar.write("""
 ## 表示日数選択
 """)
 
-days = st.sidebar.slider('日数',1, 50, 20)
+days = st.sidebar.slider('日数', 1, 50, 20)
 
 st.write(f"""
 ### 過去 **{days}日間** のFAANG株価
@@ -24,8 +24,8 @@ st.write(f"""
 @st.cache
 def get_data(days, tickers):
     df = pd.DataFrame()
-    for company in tickers.keys():
-        tkr = yf.Ticker(tickers[company])
+    for company, ticker in tickers.items():
+        tkr = yf.Ticker(ticker)
         hist = tkr.history(period=f'{days}d')
         hist.index = hist.index.strftime('%d %B %Y')
         hist = hist[['Close']]

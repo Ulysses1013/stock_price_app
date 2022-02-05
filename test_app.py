@@ -15,7 +15,7 @@ class TestGetData(unittest.TestCase):
             'microsoft': 'MSFT',
             'amazon': 'AMZN',
         }
-        self.assertIsNotNone(app.get_data(1,tickers))
+        self.assertIsNotNone(app.get_data(1, tickers))
         self.assertIsNotNone(app.get_data(50, tickers))
 
 if __name__ == '__main__':
